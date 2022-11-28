@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    <changeSet id="1" author="tymur.tuhibei">
+        <createTable tableName="contract">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="client_id" type="bigint"/>
+            <column name="contract_number" type="varchar"/>
+            <column name="contract_start" type="date" valueDate="DD/MM/YYYY"/>
+            <column name="contract_end" type="date" valueDate="DD/MM/YYYY"/>
+            <column name="sum_insured" type="numeric"/>
+            <column name="contract_payment_amount" type="numeric"/>
+        </createTable>
+        <createTable tableName="client">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="varchar"/>
+            <column name="middle_name" type="varchar"/>
+            <column name="last_name" type="varchar"/>
+            <column name="day_of_birthday" type="date" valueDate="DD/MM/YYYY"/>
+            <column name="phone_number" type="varchar"/>
+        </createTable>
+        <addAutoIncrement tableName="contract" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+        <addAutoIncrement tableName="client" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+        <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
+        <addForeignKeyConstraint baseTableName="contract" baseColumnNames="client_id" constraintName="contract_client_id_fk" referencedTableName="client" referencedColumnNames="id" />
+
+    </changeSet>
+</databaseChangeLog>

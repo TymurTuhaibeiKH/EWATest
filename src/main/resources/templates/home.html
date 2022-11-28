@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="font/css/font-awesome.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<div class="container py-5 h-100">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2>Insurance <b>Details</b></h2></div>
+                <div class="col-sm-4">
+                    <a class="btn btn-info add-new" href="/createForm"><i class="fa fa-plus"></i> Add New</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Day of Birthday</th>
+                <th>Phone Number</th>
+                <th>№ Contract</th>
+                <th>Contract Start</th>
+                <th>Contract End</th>
+                <th>Sum Insure</th>
+                <th>Contract Payment Amount</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "createForm : ${createForms}">
+                <td th:text = "${createForm.firstName}"></td>
+                <td th:text = "${createForm.middleName}"></td>
+                <td th:text = "${createForm.lastName}"></td>
+                <td th:text = "${createForm.dayOfBirthday}"></td>
+                <td th:text = "${createForm.phoneNumber}"></td>
+                <td th:text = "${createForm.contractNumber}"></td>
+                <td th:text = "${createForm.contractStart}"></td>
+                <td th:text = "${createForm.contractEnd}"></td>
+                <td th:text = "${createForm.sumInsured}"></td>
+                <td th:text = "${createForm.contractPaymentAmount}"></td>
+                <td>
+                    <form th:action = "'/' + ${createForm.clientId} + '/' + ${createForm.contractId} + '/' + 'remove'" method="post">
+                    <button type="submit" class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash-o"
+                                                                              aria-hidden="true"></i></button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<footer th:insert="blocks/footer :: footer" class="bg-dark text-center text-white fixed-bottom"/>
+</html>

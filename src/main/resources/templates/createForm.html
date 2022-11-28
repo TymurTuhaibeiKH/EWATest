@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="font/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+<div class="container py-5 h-100">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2>Add <b>Client</b></h2></div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-area">
+            <form class="row g-3" action="/createForm" method="post" name="createForm">
+                <div class="col-md-4">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="middleName" class="form-label">Middle Name</label>
+                    <input type="text" class="form-control" id="middleName" name="middleName">
+                </div>
+                <div class="col-md-4">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="dayOfBirthday" class="form-label">Day of Birthday</label>
+                    <input type="date" class="form-control" id="dayOfBirthday" name="dayOfBirthday" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+                    <small class="text-muted">format: 3806377777</small>
+                </div>
+                <div class="col-md-2">
+                    <label for="contractStart" class="form-label">Contract Start</label>
+                    <input type="date" class="form-control" id="contractStart" name="contractStart" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="contractEnd" class="form-label">Contract End</label>
+                    <input type="date" class="form-control" id="contractEnd" name="contractEnd" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="sumInsured" class="form-label">Sum Insured</label>
+                    <input type="number" class="form-control" id="sumInsured" name="sumInsured" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="contractPaymentAmount" class="form-label">Contract Payment Amount</label>
+                    <input type="number" class="form-control" id="contractPaymentAmount" name="contractPaymentAmount" required>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-secondary pull-right">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<footer th:insert="blocks/footer :: footer" class="bg-dark text-center text-white fixed-bottom"/>
+</html>
